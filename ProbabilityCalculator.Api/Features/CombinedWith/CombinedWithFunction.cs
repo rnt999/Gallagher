@@ -34,14 +34,7 @@ public class CombinedWithFunction(IValidator<CombinedWithRequest> validator, ICa
             var result = await CombinedWithHandler.Handle(body, req.HttpContext.RequestAborted);
 
             var correlationId = Activity.Current?.Id ?? Guid.NewGuid().ToString();
-            try
-            {
-                await logger.LogAsync(nameof(CombinedWithRequest), correlationId, body, result);
-            }
-            catch
-            {
-                // Logging failures should not fail a successful calculation response.
-            }
+            try { await logger.LogAsync(nameof(CombinedWithRequest), correlationId, body, result); } catch { }
 
             return new OkObjectResult(result);
         }
