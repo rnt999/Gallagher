@@ -14,7 +14,7 @@ export async function calculate(
   });
 
   if (!res.ok) {
-    const err = await res.json();
+    const err = await res.json().catch(() => ({}));
     const messages: string[] = err.errors ?? [err.error ?? err.title ?? 'Request failed'];
     throw new Error(messages.join(' '));
   }

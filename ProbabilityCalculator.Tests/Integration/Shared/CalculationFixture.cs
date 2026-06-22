@@ -5,7 +5,7 @@ using ProbabilityCalculator.Api.Infrastructure.Logging;
 
 namespace ProbabilityCalculator.Tests.Integration.Shared;
 
-public class CalculationFixture
+public class CalculationFixture : IDisposable
 {
     public ServiceProvider Sp { get; }
     public FakeCalculationLogger Logger { get; } = new();
@@ -19,5 +19,10 @@ public class CalculationFixture
         services.AddSingleton<ICalculationLogger>(Logger);
 
         Sp = services.BuildServiceProvider();
+    }
+
+    public void Dispose()
+    {
+        Sp.Dispose();
     }
 }

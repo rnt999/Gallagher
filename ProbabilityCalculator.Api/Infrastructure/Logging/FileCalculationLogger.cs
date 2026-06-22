@@ -3,7 +3,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace ProbabilityCalculator.Api.Infrastructure.Logging;
 
-public class FileCalculationLogger : ICalculationLogger
+public class FileCalculationLogger : ICalculationLogger, IDisposable
 {
     private readonly string _logPath;
     private readonly SemaphoreSlim _lock = new(1, 1);
@@ -23,5 +23,10 @@ public class FileCalculationLogger : ICalculationLogger
         await _lock.WaitAsync();
         try { await File.AppendAllTextAsync(_logPath, entry); }
         finally { _lock.Release(); }
+    }
+
+    public void Dispose()
+    {
+        _lock.Dispose();
     }
 }

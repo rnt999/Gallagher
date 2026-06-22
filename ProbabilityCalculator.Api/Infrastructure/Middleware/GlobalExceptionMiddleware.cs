@@ -1,6 +1,4 @@
-using System.Net;
 using Microsoft.Azure.Functions.Worker;
-using Microsoft.Azure.Functions.Worker.Http;
 using Microsoft.Azure.Functions.Worker.Middleware;
 using Microsoft.Extensions.Logging;
 
@@ -18,15 +16,7 @@ public class GlobalExceptionMiddleware : IFunctionsWorkerMiddleware
         {
             var logger = context.GetLogger<GlobalExceptionMiddleware>();
             logger.LogError(ex, "Unhandled exception in function {FunctionName}", context.FunctionDefinition.Name);
-
-            var request = await context.GetHttpRequestDataAsync();
-            if (request is null)
-                throw;
-
-            var response = request.CreateResponse(HttpStatusCode.InternalServerError);
-            await response.WriteAsJsonAsync(new { error = "An unexpected error occurred" });
-
-            context.GetInvocationResult().Value = response;
+            throw;
         }
     }
 }
