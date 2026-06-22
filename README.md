@@ -9,40 +9,40 @@ Full-stack probability calculator with Azure Functions backend and React fronten
 - Node.js 18+
 
 ### Backend
-\\\ash
+``ash
 cd ProbabilityCalculator.Api
 dotnet build
 dotnet run
-\\\
+``
 Runs on: http://localhost:7179/api
 
 ### Frontend
-\\\ash
+``ash
 cd probability-calculator-ui
 npm install
 npm run dev
-\\\
+``
 Runs on: http://localhost:5173
 
 ## Testing
-\\\ash
+``ash
 # Backend
 dotnet test ProbabilityCalculator.Tests
 
 # Frontend
 cd probability-calculator-ui
 npm test
-\\\
+``
 
 ## Production Build
-\\\ash
+``ash
 dotnet publish -c Release
 cd probability-calculator-ui && npm run build
-\\\
+``
 
 ## Endpoints
-- \POST /api/v1/combined-with\ — P(A) × P(B)
-- \POST /api/v1/either\ — P(A) + P(B) − P(A)P(B)
+- POST /api/v1/combined-with — P(A) × P(B)
+- POST /api/v1/either — P(A) + P(B) − P(A)P(B)
 
 ## Project Structure
 - **ProbabilityCalculator.Api/** — Azure Functions backend
@@ -55,12 +55,14 @@ cd probability-calculator-ui && npm run build
 - React + TypeScript with Vite
 
 ## Deployment
-\\\ash
+``ash
 # Azure Functions
 func azure functionapp publish <app-name>
 
 # Static Web Apps
 npm run build  # Creates dist/ folder
-\\\
+``
 
 ---
+
+© 2026 Gallagher
