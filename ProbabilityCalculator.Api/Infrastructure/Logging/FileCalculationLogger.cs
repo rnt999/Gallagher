@@ -11,7 +11,9 @@ public class FileCalculationLogger : ICalculationLogger
     public FileCalculationLogger(IConfiguration config)
     {
         _logPath = config["LogFilePath"] ?? "logs/calculations.log";
-        Directory.CreateDirectory(Path.GetDirectoryName(_logPath)!);
+        var dir = Path.GetDirectoryName(_logPath);
+        if (!string.IsNullOrEmpty(dir))
+            Directory.CreateDirectory(dir);
     }
 
     public async Task LogAsync<TRequest, TResponse>(
