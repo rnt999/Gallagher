@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="ProbabilityCalculator.Api/ProbabilityCalculator.Api.csproj" />
+  <Project Path="ProbabilityCalculator.Tests/ProbabilityCalculator.Tests.csproj" />
+</Solution>

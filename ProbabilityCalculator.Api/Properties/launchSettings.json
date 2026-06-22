@@ -1,0 +1,9 @@
+{
+  "profiles": {
+    "ProbabilityCalculator.Api": {
+      "commandName": "Project",
+      "commandLineArgs": "--port 7179",
+      "launchBrowser": false
+    }
+  }
+}
