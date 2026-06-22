@@ -10,6 +10,7 @@ using ProbabilityCalculator.Api.Infrastructure.Middleware;
 var builder = FunctionsApplication.CreateBuilder(args);
 
 builder.UseMiddleware<GlobalExceptionMiddleware>();
+builder.UseMiddleware<CorsPolicyMiddleware>();
 builder.ConfigureFunctionsWebApplication();
 
 builder.Services.AddValidatorsFromAssemblyContaining<Program>();
