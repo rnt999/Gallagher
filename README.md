@@ -64,5 +64,3 @@ npm run build  # Creates dist/ folder
 ```
 
 ---
-
-© 2026 Gallagher
