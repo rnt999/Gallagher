@@ -35,7 +35,7 @@ public class EitherFunction(IValidator<EitherRequest> validator, ICalculationLog
             var result = await EitherHandler.Handle(body, req.HttpContext.RequestAborted);
 
             var correlationId = Activity.Current?.Id ?? Guid.NewGuid().ToString();
-            try { await logger.LogAsync(nameof(EitherRequest), correlationId, body, result); } catch { }
+            await logger.LogAsync(nameof(EitherRequest), correlationId, body, result);
 
             return new OkObjectResult(result);
         }
